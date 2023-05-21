@@ -15,8 +15,14 @@ contract MultipleOutput{
         return (1, true);
     }
 
-    function destructAssignments() public pure returns(uint x, bool b){
+    function destructAssignments1() public pure returns(uint x, bool b){
         (x, b) = test1();
+    }
+
+    function destructAssignments2() public pure returns(uint, bool){
+        (, bool b) = test1();
+        uint a = 5;
+        return (a,b);
     }
 
 }
