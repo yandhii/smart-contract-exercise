@@ -9,6 +9,10 @@ contract callTestContract{
     function setX(address _test, uint _x) external{
         TestContract(_test).setX(_x);
     }
+
+    function setXandSendEther(address _test, uint _x) external payable{
+        TestContract(_test).setXandReceiveEther{value:msg.value}(_x);
+    }
 }
 
 contract TestContract{
@@ -21,5 +25,9 @@ contract TestContract{
 
     function getX() public view returns(uint){
         return x;
+    }
+
+    function setXandReceiveEther(uint _x) external payable {
+        x = _x;
     }
 }
