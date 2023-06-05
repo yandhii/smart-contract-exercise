@@ -26,6 +26,9 @@ uint8 a = 1;
 bytes1 b = 0x01;
 ```  
 
+**Why bytes and uint have different storage layout in Solidity?**
+
+
 ### 3. Type conversion in Solidity
 #### 3.1 Conversion from uintM to uintN  
 smaller to larger (M < N): left-padding M-N bits for uintM
