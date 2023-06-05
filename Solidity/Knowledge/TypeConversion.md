@@ -27,7 +27,7 @@ bytes1 b = 0x01;
 ```  
 
 ### 3. Type conversion in Solidity
-#### 3.1 Conversion uintM to uintN  
+#### 3.1 Conversion from uintM to uintN  
 smaller to larger (M < N): left-padding M-N bits for uintM
 e.g. ```uint64``` to ```uint128```
 ```
@@ -36,14 +36,20 @@ uint32 b = uint32(a); // b = 0x00001234
 ```  
 
 larger to smaller (M > N): left-truncating M-N bits for uintM
-e.g. ```uint32``` to ```uint16```
+```uint32``` to ```uint16```
 ```uint32 a = 0x12345678;
 uint16 b = uint16(a); // b = 0x5678
 ```
 
 left-truncating = do module N for uintM
-e.g. 
 ```uint32 a = 100000;
 uint16 public b = uint16(a); //b = a % 65536
 uint8 public c = uint8(a); //c = a % 256
 ```
+For a uint32 variable a, we want to convert it to smaller type, so we use the remainder get by % as the converted value.
+For uint16/ uint8, maximum value is 2**16-1/ 2**8-1. The upper bound is 2**16, 2**8, respectively.
+So why use the upper bound not real maximum value?  
+I.e., assume we have ```uint32 a=256```, if we want to convert it to ```uint8```, intuitively we get 0 for uint8 type because uint8's real maximum value is 255.
+If we use 255 for modulo operation, eventually we will get a=1 with ```uint8```, which is incorrect. So we need to use upper bound value for modulo.  
+
+### 3.2 Conver from bytesM to bytesN
