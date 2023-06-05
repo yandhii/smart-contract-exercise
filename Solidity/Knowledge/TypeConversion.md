@@ -23,6 +23,6 @@ Even the total bytes are same for two variable, they still have different paddin
 // 0x00000000…01
 uint8 a = 1;
 // 0x01000000….
-bytes1 b = 1;
+bytes1 b = 0x01;
 ```  
 
