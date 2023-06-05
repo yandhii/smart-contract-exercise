@@ -41,9 +41,9 @@ e.g. ```uint32``` to ```uint16```
 uint16 b = uint16(a); // b = 0x5678
 ```
 
-  left-truncating = do module N for uintM
-  e.g. 
-  ```uint32 a = 100000;
-  uint16 public b = uint16(a); //b = a % 65536
-  uint8 public c = uint8(a); //c = a % 256
-  ```
+left-truncating = do module N for uintM
+e.g. 
+```uint32 a = 100000;
+uint16 public b = uint16(a); //b = a % 65536
+uint8 public c = uint8(a); //c = a % 256
+```
