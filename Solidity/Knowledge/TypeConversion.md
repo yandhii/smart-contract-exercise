@@ -26,3 +26,24 @@ uint8 a = 1;
 bytes1 b = 0x01;
 ```  
 
+### 3. Type conversion in Solidity
+#### 3.1 Conversion uintM to uintN  
+smaller to larger (M < N): left-padding M-N bits for uintM
+e.g. ```uint64``` to ```uint128```
+```
+uint16 a = 0x1234;
+uint32 b = uint32(a); // b = 0x00001234
+```  
+
+larger to smaller (M > N): left-truncating M-N bits for uintM
+e.g. ```uint32``` to ```uint16```
+```uint32 a = 0x12345678;
+uint16 b = uint16(a); // b = 0x5678
+```
+
+left-truncating = do module N for uintM
+e.g. 
+```uint32 a = 100000;
+uint16 public b = uint16(a); //b = a % 65536
+uint8 public c = uint8(a); //c = a % 256
+```
