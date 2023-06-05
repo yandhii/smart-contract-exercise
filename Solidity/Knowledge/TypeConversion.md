@@ -19,8 +19,10 @@ For a uint: ```uint256 value = 1_633_837_924``` (= 0x61626364 in hex) will left 
 ```0x0000000000000000000000000000000000000000000000000000000061626364```  
 
 Even the total bytes are same for two variable, they still have different padding method.  
-```// 0x00000000…01
+```
+// 0x00000000…01
 Uint8 a = 1;
 // 0x01000000….
-bytes1 b = 1;```  
+bytes1 b = 1;
+```  
 
