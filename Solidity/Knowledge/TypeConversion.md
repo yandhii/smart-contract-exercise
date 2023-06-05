@@ -11,10 +11,13 @@ However, differnt data types have differnet storage layout (where the high order
 ### 2.1 Padding rules
 #### Left-padded: for ```intN```/ ```uintN```/ ```address``` and other types.  
 Right-padded: for ```string```/ ```bytes``` and ```bytesN```.  
-Actualy, left-padded = right aligned, right-padded = left aligned.  
+Actualy, left-padded = right aligned, right-padded = left aligned. 
+
 For a string:  ```string str = "abcd"``` in Solidity will right padded by EVM to 32 bytes word => ```0x6162636400000000000000000000000000000000000000000000000000000000 ```  
+
 For a uint: ```uint256 value = 1_633_837_924``` (= 0x61626364 in hex) will left padded by EVM to 32 bytes word =>
 ```0x0000000000000000000000000000000000000000000000000000000061626364```  
+
 Even the total bytes are same for two variable, they still have different padding method.  
 ```// 0x00000000…01
 Uint8 a = 1;
