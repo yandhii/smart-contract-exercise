@@ -9,7 +9,7 @@ Small-Endian: ```78 56 34 12```
 ### EVM uses 32 bytes words to manipulate the data, it stores all data in Big-Endian format.  
 However, differnt data types have differnet storage layout (where the high order bits are placed).
 ### 2.1 Padding rules
-#### Left-padded: for ```intN```/ ```uintN```/ ```address``` and other types.
-Right-padded: for ```string```/ ```bytes``` and ```bytesN```.
-Actualy, left-padded = right aligned, right-padded = left aligned.
+#### Left-padded: for ```intN```/ ```uintN```/ ```address``` and other types.  
+Right-padded: for ```string```/ ```bytes``` and ```bytesN```.  
+Actualy, left-padded = right aligned, right-padded = left aligned.  
 e.g. ```string str = "abcd"``` in Solidity will right padded by EVM to 32 bytes word => ``0x6162636400000000000000000000000000000000000000000000000000000000 ```
