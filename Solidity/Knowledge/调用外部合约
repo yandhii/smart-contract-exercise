@@ -1,0 +1,50 @@
+# 使用call调用abi编码的函数
+  ```solidity
+import "hardhat/console.sol";
+
+contract A {
+    function setValueOnB(address b) external {
+        (bool s, ) = b.call(abi.encodeWithSignature("storeValue(uint256)", 22));
+        require(s);
+    }
+}
+
+contract B {
+    uint x;
+
+    function storeValue(uint256 _x) external {
+        x = _x;
+        console.log(x); // 22
+    }
+}
+```
+# 使用已经获得代码的合约的实例调用那个
+```solidity
+  import "hardhat/console.sol";
+
+contract A {
+    function setValueOnB(address b) external {
+        B(b).storeValue(22);
+    }
+}
+
+contract B {
+    uint x;
+
+    function storeValue(uint256 _x) external {
+        x = _x;
+        console.log(x); // 22
+    }
+}
+```
+# 使用interface调用
+  ```solidity
+  interface B {
+    function storeValue(uint256) external;
+}
+
+contract A {
+    function setValueOnB(address b) external {
+        B(b).storeValue(22);
+    }
+```
